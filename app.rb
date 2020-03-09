@@ -24,9 +24,9 @@ before do
 end
 
 get "/" do
-    puts events_table.all
-    @events = events_table.all.to_a
-    view "events"
+     puts events_table.all
+     @events = events_table.all.to_a
+    view "landing"
 end
 
 get "/events/:id" do
