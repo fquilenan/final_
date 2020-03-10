@@ -3,25 +3,3 @@
 <% for event in @events %>
     <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
 <% end %>
-
-<div class="media">
-  
-  <div class="media-body">
-    <h5 class="mt-0">
-        <% for event in @events %>
-        <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
-    
-        <div class="media mt-3">
-        <a class="mr-3" href="#">
-        <p><a href="/events/<%= event[:id] %>"><%= event[:description] %></a></p>
-        <% end %></h5>
-      </a>
-   
-    
-
-
-    
-      
-    </div>
-  </div>
-</div>
