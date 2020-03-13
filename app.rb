@@ -5,7 +5,8 @@ require "sinatra/reloader" if development?                                      
 require "sequel"                                                                      #
 require "logger"                                                                      #
 require "bcrypt"                                                                      #
-require "twilio-ruby"                                                                 #
+require "twilio-ruby"   
+require "geocoder"                                                              #
 connection_string = ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/development.sqlite3"  #
 DB ||= Sequel.connect(connection_string)                                              #
 DB.loggers << Logger.new($stdout) unless DB.loggers.size > 0                          #
@@ -40,6 +41,11 @@ get "/events/:id" do
     @rsvps = rsvps_table.where(event_id: @event[:id])
     @going_count = rsvps_table.where(event_id: @event[:id], going: true).count
     @users_table = users_table
+    
+    results = Geocoder.search(params[@event[:location]])
+    lat_long = results.first.coordinates # => [lat, long]
+    #"#{lat_long[0]} #{lat_long[1]}"
+
     view "event"
 end
 
@@ -90,3 +96,5 @@ get "/logout" do
     @current_user = nil
     view "logout"
 end
+
+
