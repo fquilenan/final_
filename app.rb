@@ -42,10 +42,15 @@ get "/events/:id" do
     @going_count = rsvps_table.where(event_id: @event[:id], going: true).count
     @users_table = users_table
     
-    results = Geocoder.search(params[@event[:location]])
-    lat_long = results.first.coordinates # => [lat, long]
-    #"#{lat_long[0]} #{lat_long[1]}"
-
+    # @lat = rand(-90.0..90.0)
+    # @long = rand(-180.0..180.0)
+   
+    
+    results = Geocoder.search(@event[:location])
+    
+    lat_lng = results.first.coordinates 
+    @lat_long = "#{lat_lng[0]}, #{lat_lng[1]}" 
+    
     view "event"
 end
 
