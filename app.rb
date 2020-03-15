@@ -19,8 +19,11 @@ after { puts; }                                                                 
 events_table = DB.from(:events)
 rsvps_table = DB.from(:rsvps)
 users_table = DB.from(:users)
-account_sid = "AC464bc6fa90c95e37140f6043e9eef3ec"
-auth_token = "cba8fdcaa26054cac3bdd648be2b0c1f"
+account_sid = ENV["TWILIO_ACCOUNT_SID"]
+auth_token = ENV["TWILIO_AUTH_TOKEN"]
+
+
+
 client = Twilio::REST::Client.new(account_sid, auth_token)
 
 

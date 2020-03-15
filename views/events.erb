@@ -27,7 +27,7 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title"><%= event[:title] %></h5>
+    <h5 class="card-title"><a href="/events/<%= event[:id] %>"><%= event[:title] %></h5>
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text"><%= event[:description] %></p>
     <a href="#" class="card-link">Card link</a>
@@ -35,9 +35,32 @@
   </div>
 </div>
 
-
-
 <% end %>
+
+
+<% for event in @events %>
+<div class="card-columns">
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= event[:title] %></h5>
+      <p class="card-text"><%= event[:description] %></p>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
 <a href="/events/new" class="card-link">Create Event</a>
 
 
