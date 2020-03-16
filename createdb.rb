@@ -11,6 +11,7 @@ DB.create_table! :events do
   String :description, text: true
   String :date
   String :location
+  String :sport
 end
 DB.create_table! :rsvps do
   primary_key :id
@@ -29,12 +30,20 @@ end
 # Insert initial (seed) data
 events_table = DB.from(:events)
 
-events_table.insert(title: "Bacon Burger Taco Fest", 
-                    description: "Here we go again bacon burger taco fans, another Bacon Burger Taco Fest is here!",
+events_table.insert(title: "Soccer match 7x7", 
+                    description: "We are a group of friends looking for friendly soccer matches!",
                     date: "June 21",
-                    location: "Kellogg Global Hub")
+                    location: "Kellogg Global Hub",
+                    sport: "Soccer")
 
-events_table.insert(title: "Kaleapolooza", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+events_table.insert(title: "Tennis training session", 
+                    description: "If you want to improve your tennis skills and your a begginer, you're all welcome!",
                     date: "July 4",
-                    location: "Nowhere")
+                    location: "Evanston, Illinois",
+                    sport: "Tennis")
+
+events_table.insert(title: "Bike ride", 
+                    description: "We meet every Sunday morning and make a 30 miles ride, come and join us!",
+                    date: "Sunday, March 15th, at 9:00",
+                    location: "Target, Evanston",
+                    sport: "Bike")

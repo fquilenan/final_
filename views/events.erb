@@ -1,54 +1,27 @@
-<h1>All Events</h1>
-
 <div class="jumbotron">
-  <h1 class="display-4">Events for all!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <h1 class="display-4">Sports Events for all community!</h1>
+  <p class="lead">This is a way to stay connected and join for soccer, tennis, basketball, bike rides and more!</p>
   <hr class="my-4">
   <p> Before checking out the events, please sign up or sign in!</p>
+  <a class="btn btn-primary" href="/events/new" role="button">Create Event</a>
 </div>
 
 
-
-<% for event in @events %>
-    <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
-
-
-
-<div class="media">
-  <img src="..." class="mr-3" alt="...">
-  <div class="media-body">
-    <h5 class="mt-0"><%= event[:title] %></h5>
-    <%= event[:description] %>
-  </div>
+<div class="container"> 
+    <div class="row">
+         <% for event in @events %>  
+            <div class="col-md-4">
+            
+             <h2><%= event[:title] %></h2>
+             <h6><button type="button" class="btn btn-outline-secondary btn-sm"><%= event[:sport] %></button></h6>
+             <p><%= event[:description] %> </p>
+             <p><a class="btn btn-secondary" href="/events/<%= event[:id] %>" role="button">View details &raquo;</a></p>
+             
+            </div>
+    <% end %>
 </div>
-<% end %>
-
-<% for event in @events %>
-
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><a href="/events/<%= event[:id] %>"><%= event[:title] %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text"><%= event[:description] %></p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-
-<% end %>
-
-
-<% for event in @events %>
-<div class="card-columns">
-  <div class="card">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= event[:title] %></h5>
-      <p class="card-text"><%= event[:description] %></p>
-    </div>
-  </div>
-</div>
-<% end %>
+    
+   
 
 
 
@@ -60,8 +33,6 @@
 
 
 
-
-<a href="/events/new" class="card-link">Create Event</a>
 
 
 
